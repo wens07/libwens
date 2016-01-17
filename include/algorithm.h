@@ -60,7 +60,21 @@ void permutation(type *arr, int start, int end)
     }
 }
 
+/**
+ *  Prints all prime numbers smaller than n
+ *
+ *  @param n primes not bigger than n
+ */
 void sieve_sundaram(int32_t n);
+
+/**
+ *  Prints all prime numbers smaller than n
+ *
+ *  @param n primes not bigger than n
+ */
+void sieve_eratosthenes(int32_t n);
+
+
 _LIBWENS_END
 
 #endif
