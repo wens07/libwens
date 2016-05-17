@@ -8,7 +8,7 @@
 #include <sys/time.h>
 #include <boost/noncopyable.hpp>
 #include "CallBack.h"
-#include "Timestamp.h"
+#include "../Timestamp.h"
 
 using namespace wens;
 using namespace wens::net;
@@ -20,7 +20,7 @@ namespace wens
     public:
         Timer()
         {
-            __sync
+
         }
 
     private:

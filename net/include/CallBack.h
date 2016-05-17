@@ -6,7 +6,7 @@
 #define WENSLIB_CALLBACK_H
 
 #include <functional>
-#include "../config.h"
+#include "../../base/include/config.h"
 
 namespace wens
 {
