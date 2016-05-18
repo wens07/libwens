@@ -1,5 +1,10 @@
+#include "base/include/Graph.h"
+#include "base/include/Timestamp.h"
+#include <iostream>
+
+
 /*
- * following is for Graph test
+ // following is for Graph test
 int main()
 {
     Graph g(7);
@@ -9,19 +14,32 @@ int main()
     g.addEdge(1, 4);
     g.addEdge(2, 5);
     g.addEdge(2, 6);
+    g.addEdge(0, 0);
 
-    printf("Following is Breadth First Traversal (starting from vertex 0) \n");
+   */
+/* printf("Following is Breadth First Traversal (starting from vertex 0) \n");
     printf("BFS:\n");
     g.BFS(0);
-    printf("DFS:\n");
-    g.DFS(0);
+    printf("NO RECUR DFS:\n");
+    g.DFS_NO_RECUR(0);
+
+     printf("RECUR DFS:\n");
+     g.DFS_RECUR(0);*//*
+
+
+    if (g.isCyclic())
+        printf("there is a cycle in graph!\n");
+    else
+        printf("there is no cycle in graph!\n");
+
 
     return 0;
-}*/
+}
+*/
 
 
-#include "base/include/Graph.h"
-#include <iostream>
+/*
+ * following is for dijkstra shortest path algorithm test
 
 // Driver program to test methods of graph class
 int main()
@@ -46,6 +64,23 @@ int main()
     g.addEdge(7, 8, 7);
 
     g.shortestPath_by_set(0);
+
+    return 0;
+}*/
+
+
+int main()
+{
+    wens::Timestamp t;
+
+    printf("origin timestamp:\n");
+    printf("%s\n", t.toString().c_str());
+    printf("%s\n", t.toFormattedString(true).c_str());
+
+    t = t.now();
+    printf("now timestamp:\n");
+    printf("%s\n", t.toString().c_str());
+    printf("%s\n", t.toFormattedString(true).c_str());
 
     return 0;
 }

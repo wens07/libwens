@@ -1,5 +1,13 @@
 //
-// Created by wengqiang on 11/4/16.
+// Copyright (c) 2016. All rights reserved.
+// http://github.com/wens07
+//
+// Author: wengqiang (wens at qiangweng dot site)
+// Date: 2016/4/11
+//
+// Use of this source code is governed by a BSD-style license
+// that can be found in the License file.
+//
 //
 
 #ifndef WENSLIB_TIMER_H
@@ -8,7 +16,7 @@
 #include <sys/time.h>
 #include <boost/noncopyable.hpp>
 #include "CallBack.h"
-#include "../Timestamp.h"
+#include "Timestamp.h"
 
 using namespace wens;
 using namespace wens::net;

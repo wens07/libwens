@@ -1,7 +1,13 @@
 //
-// Created by wengqiang on 12/4/16.
-// 
 // Copyright (c) 2016. All rights reserved.
+// http://github.com/wens07
+//
+// Author: wengqiang (wens at qiangweng dot site)
+// Date: 2016/4/12
+//
+// Use of this source code is governed by a BSD-style license
+// that can be found in the License file.
+//
 //
 
 #ifndef WENSLIB_TIMESTAMP_H
@@ -9,10 +15,19 @@
 
 #include <boost/operators.hpp>
 #include <string>
+#include "copyable.h"
 
 namespace wens
 {
-    class Timestamp : public  boost::less_than_comparable<Timestamp>
+    /**
+     * Timestamp in UTC, in microseconds resolution.
+     *
+     * this class is immutable
+     * it is recommended to pass it by value, since it's passed in on register x64
+     */
+    class Timestamp : public  boost::less_than_comparable<Timestamp>,
+                       public wens::copyable
+
     {
     public:
         /**
@@ -76,12 +91,12 @@ namespace wens
 
     inline bool operator<(const Timestamp &lhs, const Timestamp &rhs)
     {
-        return lhs.microseconds_since_epoch_ < rhs.microseconds_since_epoch_;
+        return lhs.microSecondsSinceEpoch() < rhs.microSecondsSinceEpoch();
     }
 
     inline bool operator==(const Timestamp &lhs, const Timestamp &rhs)
     {
-        return lhs.microseconds_since_epoch_ == rhs.microseconds_since_epoch_;
+        return lhs.microSecondsSinceEpoch() == rhs.microSecondsSinceEpoch();
     }
 
 

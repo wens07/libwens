@@ -19,7 +19,6 @@ namespace wens
     /**
      * a tag class emphasises the objects are copyable.
      *
-     *
      */
     class copyable
     {

@@ -1,12 +1,24 @@
 //
-// Created by wengqiang on 2016/5/17.
+// Copyright (c) 2016. All rights reserved.
+// http://github.com/wens07
 //
+// Author: wengqiang (wens at qiangweng dot site)
+// Date: 2016/5/18
+//
+// Use of this source code is governed by a BSD-style license
+// that can be found in the License file.
+//
+//
+
+
 #include <stack>
 #include <queue>
 #include <set>
 #include "include/Graph.h"
 
-
+/**
+ *  following is for Graph class
+ */
 Graph::Graph(int v)
 {
     this->v_num = v;
@@ -58,7 +70,7 @@ void Graph::BFS(int source)
 
 }
 
-void  Graph::DFS(int source)
+void  Graph::DFS_NO_RECUR(int source)
 {
     //mark all vertices are not visited
     bool *visited = new bool[v_num];
@@ -97,6 +109,75 @@ void  Graph::DFS(int source)
 
 }
 
+void Graph::DFS_RECUR_UTIL(int source, bool visited[])
+{
+    // if not visited, set it visited
+    if (!visited[source])
+        visited[source] = true;
+    printf("%.1d\t", source);
+
+    // visit adjacent vertex recursively
+    std::list<int>::iterator iter;
+    for (iter = std::begin(adj[source]); iter != std::end(adj[source]); ++iter)
+    {
+        if (!visited[*iter])
+            DFS_RECUR_UTIL(*iter, visited);
+    }
+}
+
+void Graph::DFS_RECUR(int source)
+{
+    bool *visited = new bool[v_num];
+    for (int i = 0; i < v_num; ++i)
+        visited[i] = false;
+
+    DFS_RECUR_UTIL(source, visited);
+}
+
+bool Graph::isCyclicUtil(int v, bool visited[], bool instack[])
+{
+    //set whether visited and instack
+    visited[v] = true;
+    instack[v] = true;
+
+    // transfer all vertex that adjacent to v
+    std::list<int>::iterator iter;
+    for (iter = std::begin(adj[v]); iter != std::end(adj[v]); ++iter)
+    {
+        if (!visited[*iter] && isCyclicUtil(*iter, visited, instack))
+            return true;
+        else if(instack[*iter])
+            return true;
+    }
+
+    //get out of recursive stack
+    instack[v] = false;
+    return  false;
+}
+bool Graph::isCyclic()
+{
+    // mark all vertex unvisited and not included in recursive stack
+    bool *visited = new bool[v_num];
+    bool *instack = new  bool[v_num];
+
+    for (int i = 0; i < v_num; ++i)
+    {
+        visited[i] = false;
+        instack[i] = false;
+    }
+
+    for (int i = 0; i < v_num; ++i)
+    {
+        if (isCyclicUtil(i, visited, instack))
+            return true;
+    }
+
+    return false;
+}
+
+/**
+ *  following is GraphWeight class
+ */
 GraphWeight::GraphWeight(int v)
 {
     this->v_num = v;
