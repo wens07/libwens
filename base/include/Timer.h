@@ -15,6 +15,7 @@
 
 #include <sys/time.h>
 #include <boost/noncopyable.hpp>
+
 #include "CallBack.h"
 #include "Timestamp.h"
 
@@ -25,18 +26,42 @@ namespace wens
 {
     class Timer : boost::noncopyable
     {
-    public:
-        Timer()
-        {
-
-        }
 
     private:
         const TimerCallback callback_;
         Timestamp expiration_;
         const double interval_;
         const  bool repeat_;
-        const int64_t  sequence_;
+//        const int64_t  sequence_; //if added, should also add constructor etc.
+
+    public:
+        Timer(const TimerCallback &cb, Timestamp when, double interval): callback_(cb),
+                                                                           expiration_(when),
+                                                                           interval_(interval),
+                                                                           repeat_(interval > 0.0)
+        {
+        }
+
+#ifdef __GXX_EXPERIMENTAL_CXX0X__
+        Timer(const TimerCallback &&cb, Timestamp when, double interval): callback_(cb),
+                                                                         expiration_(when),
+                                                                         interval_(interval),
+                                                                         repeat_(interval > 0.0)
+        {
+        }
+#endif
+
+        void run() const
+        {
+            callback_();
+        }
+
+        //getter functions
+        Timestamp expiration() const { return expiration_;}
+        bool repeat() const { return repeat_;}
+//        int64_t sequence() const { return  sequence_};
+
+        void restart(Timestamp now);
 
 
 

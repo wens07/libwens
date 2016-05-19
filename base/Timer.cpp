@@ -10,4 +10,19 @@
 //
 //
 
-#include "include/Timer.h"
+#include "Timer.h"
+
+using namespace wens;
+using namespace wens::net;
+
+void Timer::restart(Timestamp now)
+{
+    if (repeat_)
+    {
+        expiration_ = addTime(now, interval_);
+    }
+    else
+    {
+        expiration_ = Timestamp::invalid();
+    }
+}

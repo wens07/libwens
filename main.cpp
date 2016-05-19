@@ -1,7 +1,11 @@
 #include "base/include/Graph.h"
 #include "base/include/Timestamp.h"
+#include "net/include/Buffer.h"
+#include "Timer.h"
 #include <iostream>
 
+using namespace wens;
+using namespace wens::net;
 
 /*
  // following is for Graph test
@@ -69,18 +73,15 @@ int main()
 }*/
 
 
+
 int main()
 {
-    wens::Timestamp t;
 
-    printf("origin timestamp:\n");
-    printf("%s\n", t.toString().c_str());
-    printf("%s\n", t.toFormattedString(true).c_str());
+    TimerCallback cb;
+    Timestamp t;
+    Timer timer(cb, t, 10);
+    timer.run();
 
-    t = t.now();
-    printf("now timestamp:\n");
-    printf("%s\n", t.toString().c_str());
-    printf("%s\n", t.toFormattedString(true).c_str());
 
     return 0;
 }
