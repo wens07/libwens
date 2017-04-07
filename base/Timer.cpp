@@ -19,7 +19,7 @@ void Timer::restart(Timestamp now)
 {
 
 //    just to test
-//      another test
+
 
     if (repeat_)
     {
