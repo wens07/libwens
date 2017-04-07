@@ -17,6 +17,9 @@ using namespace wens::net;
 
 void Timer::restart(Timestamp now)
 {
+
+//    just to test
+
     if (repeat_)
     {
         expiration_ = addTime(now, interval_);
