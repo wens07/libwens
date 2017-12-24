@@ -1,11 +1,5 @@
-#include "base/include/Graph.h"
-#include "base/include/Timestamp.h"
-#include "net/include/Buffer.h"
-#include "Timer.h"
-#include <iostream>
 
-using namespace wens;
-using namespace wens::net;
+
 
 /*
  // following is for Graph test
@@ -73,15 +67,86 @@ int main()
 }*/
 
 
+//#include "Buffer.h"
+//
+//using namespace wens;
+//using namespace wens::net;
+//int main()
+//{
+//    Buffer b;
+//
+//
+//    return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <memory>
+//
+//#include <chrono>
+//#include <iostream>
+
+
+//#include "multi_thread/include/thread_pool.h"
+//
+//void test_print()
+//{
+//    printf("this is in thread %d\n", std::this_thread::get_id());
+//}
+//
+//int main()
+//{
+//    ThreadPool pool(4);
+//    std::vector< std::future<int> > results;
+//
+//    for(int i = 0; i < 8; ++i) {
+//        results.emplace_back(
+//            pool.enqueue([i] {
+////                std::cout << "hello " << i << std::endl;
+////                std::this_thread::sleep_for(std::chrono::seconds(1));
+////                std::cout << "world " << i << std::endl;
+//                std::cout<<"in thread "<<std::this_thread::get_id()<<std::endl;
+//                return i*i;
+//            })
+//        );
+//    }
+//
+//    for(auto && result: results)
+//        std::cout << result.get() << ' ';
+//    std::cout << std::endl;
+//
+//    return 0;
+//
+//
+//    return 0;
+//}
+
+
+#include <stdio.h>
+#include "base/include/comman_sort_algorithm.h"
+
 
 int main()
 {
 
-    TimerCallback cb;
-    Timestamp t;
-    Timer timer(cb, t, 10);
-    timer.run();
+//
+//    int a[] = {7, 2, 10, 4, 1, 18};
+//
+//    bubble_sort(a, sizeof(a)/sizeof(int));
+//
+//    for (int i = 0; i < 6; ++i)
+//        printf("%d ", a[i]);
 
+
+    int a = 10, b = 0;
+    auto tmp = a ^ b;
+    a = tmp ^ a;
+    b = tmp ^ b;
+
+    decltype(a) c;
+    char d;
+    printf("%s\n", typeid(c).name());
+    printf("%s\n", typeid(d).name());
 
     return 0;
 }

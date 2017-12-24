@@ -64,8 +64,6 @@ namespace wens
         void restart(Timestamp now);
 
 
-
-
     };
 
 }
