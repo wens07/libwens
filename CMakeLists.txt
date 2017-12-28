@@ -15,8 +15,8 @@ include_directories(${PROJECT_INCLUDE_DIR})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-file(GLOB_RECURSE HEAD_FILES net/include multi_thread/include "*.h")
-file(GLOB_RECURSE SOURCE_FILES net "*.cpp")
+file(GLOB_RECURSE HEAD_FILES net/include multi_thread/include digital_currency  "*.h")
+file(GLOB_RECURSE SOURCE_FILES digital_currency "*.cpp")
 
 set(SOURCE_FILES ${HEAD_FILES} main.cpp )
 
